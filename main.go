@@ -11,7 +11,13 @@ import (
 
 func main() {
 	bearerToken := flag.String("bearer", "5K4MVS-OjfWhK_4yrjOlFe1F6kJXPVf7eQYggo8ebAE", "Tibber Api token")
+	apiUrl := flag.String("api-url", "https://localhost:8080/api/powerusage", "Api url to post this data too")
+	apiToken := flag.String("api-token", "api-token", "Api token used for autherization")
 	flag.Parse()
+
+	//Log flags to remove error
+	fmt.Println(apiUrl)
+	fmt.Println(apiToken)
 
 	tibberClient := tibber.CreateTibberClient(*bearerToken, "tibber-harvester")
 	viewer, err := tibberClient.GetHomes()
@@ -21,7 +27,6 @@ func main() {
 
 	validHomes := []tibber.Home{}
 	for i := range viewer.Viewer.Homes {
-		// fmt.Println("Support RealTimeConsumptionEnabled", viewer.Viewer.Homes[i].Features.RealTimeConsumptionEnabled)
 		if viewer.Viewer.Homes[i].Features.RealTimeConsumptionEnabled {
 			validHomes = append(validHomes, viewer.Viewer.Homes[i])
 		}
