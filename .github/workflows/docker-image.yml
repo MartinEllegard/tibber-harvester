@@ -12,9 +12,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag tibber-harvester:$(date +%s)
     - uses: MaximilianoBz/dockerhub-buildpush@v1.1
     - with:
         # Docker Registry Url, eg: docker.io
