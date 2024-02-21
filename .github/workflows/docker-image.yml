@@ -15,3 +15,15 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag tibber-harvester:$(date +%s)
+    - uses: MaximilianoBz/dockerhub-buildpush@v1.1
+    - with:
+        # Docker Registry Url, eg: docker.io
+        registry_url: https://hub.docker.com/
+        # Docker Image Repository Name, eg: username/demo-app
+        repository_name: zevome/tibber-harvester
+        # Docker Login UserName, from: https://hub.docker.com/
+        user_name: zevome
+        # Docker Login Access Token, from: https://hub.docker.com/
+        password: ${{ secrets.DOCKERHUB }}
+        # Image Build Version
+        image_version: ${{github.ref_name}}
