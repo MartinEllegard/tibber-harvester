@@ -1,4 +1,4 @@
-module github.com/MartinEllegard/tibber-harvester
+module tibber-harvester
 
 go 1.22.0
 
