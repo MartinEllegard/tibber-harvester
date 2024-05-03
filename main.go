@@ -15,7 +15,7 @@ func main() {
 	apiToken := flag.String("api-token", "api-token", "Api token used for autherization")
 	flag.Parse()
 
-	//Log flags to remove error
+	// Log flags to remove error
 	fmt.Println(apiUrl)
 	fmt.Println(apiToken)
 
