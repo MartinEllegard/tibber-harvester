@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"sync"
 	"tibber-harvester/config"
-	"tibber-harvester/db"
 	"tibber-harvester/handlers"
 
 	"github.com/MartinEllegard/tibber-go"
@@ -18,11 +17,11 @@ func main() {
 	flag.Parse()
 
 	// Setup DB
-	dbHandler := db.CreateDbHandler()
-	err := dbHandler.SetupHandler()
-	if err != nil {
-		panic(err)
-	}
+	// dbHandler := db.CreateDbHandler()
+	// err := dbHandler.SetupHandler()
+	// if err != nil {
+	// 	panic(err)
+	// }
 
 	// Log flags to remove error
 	fmt.Println(apiUrl)

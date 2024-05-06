@@ -3,7 +3,6 @@ package handlers
 import (
 	"bytes"
 	"encoding/json"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"time"
@@ -68,11 +67,4 @@ func (h *MessageHandler) HandlePowerMessage(message tibber.LiveMeasurement) {
 		log.Println("Error occured dring post request", err)
 	}
 	defer resp.Body.Close()
-	// Read the response body
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	sb := string(body)
-	log.Printf(sb)
 }
